@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lawton Buyer Tools</title>
+<meta name="description" content="Free tools for buying a home in Lawton and Southwest Oklahoma. A payment calculator built on local tax and insurance numbers, and a plain guide to how buying here actually goes. From Dustin Ray, Buyer Specialist, Pam &amp; Barry's Team, RE/MAX Professionals.">
+<link rel="canonical" href="https://dustinrayokrealtor.github.io/lawton-buyer-tools/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lawton Buyer Tools">
+<meta property="og:description" content="A payment calculator built on local Lawton numbers, and a plain guide to how buying here actually goes.">
+<meta property="og:url" content="https://dustinrayokrealtor.github.io/lawton-buyer-tools/">
+<meta property="og:image" content="https://dustinrayokrealtor.github.io/lawton-buyer-tools/team-logo.png">
+<link rel="icon" type="image/png" href="team-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<!-- Single-theme by deliberate choice: RE/MAX brand compliance fixes the palette. -->
+<style>
+:root{
+  --cream:#F7F5EE; --surface:#FFFDF7; --ink:#000E35; --ink-2:#3A4664; --ink-3:#6C7691;
+  --sky-wash:#E6F2FB; --rx-blue:#0043FF; --rx-red:#FF1200; --rule:#DCD6C7;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Montserrat",Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+.sheet{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:26px 56px}
+h1,h2{margin:0;font-weight:800;letter-spacing:-.018em;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(28px,4vw,40px)}
+h2{font-size:clamp(19px,2.2vw,24px);letter-spacing:-.014em}
+p{margin:0;max-width:64ch}
+.lab{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.masthead{display:flex;flex-direction:column;gap:16px;padding-bottom:18px;border-bottom:3px solid var(--ink)}
+.brandrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.brandname{font-weight:700;font-size:12px;letter-spacing:.05em}
+.brandname span{color:var(--ink-3);font-weight:500}
+.pb-logo{height:60px;width:auto;display:block}
+.intro{font-size:17px;color:var(--ink-2);max-width:60ch;line-height:1.5}
+
+.tools{margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tool{background:var(--surface);padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;border-top:4px solid transparent;transition:border-color .15s}
+.tool:hover{border-top-color:var(--rx-blue)}
+.tool:focus-visible{outline:2px solid var(--rx-blue);outline-offset:-2px}
+.tool p{font-size:14px;color:var(--ink-2)}
+.tool ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+.tool .go{margin-top:auto;padding-top:6px;font-weight:700;font-size:13px;color:var(--rx-blue)}
+
+.signoff{margin-top:32px;padding-top:20px;border-top:3px solid var(--ink);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:640px){.signoff{grid-template-columns:minmax(0,1fr);gap:18px}}
+.signoff p{font-size:14.5px;color:var(--ink-2)}
+.contact{background:var(--surface);border:1px solid var(--rule);padding:15px 18px;display:flex;flex-direction:column;gap:4px}
+.contact .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+.contact .rl{font-size:12.5px;color:var(--ink-3);margin-bottom:5px}
+.contact a{color:var(--rx-blue);text-decoration:none;font-weight:600;font-size:14.5px}
+.contact a:hover{text-decoration:underline}
+.contact a:focus-visible{outline:2px solid var(--rx-blue);outline-offset:2px}
+footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--rule)}
+footer p{font-size:11px;color:var(--ink-3);line-height:1.5;max-width:94ch}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="masthead">
+  <div class="brandrow">
+    <span class="brandname">Pam &amp; Barry's Team <span>· RE/MAX Professionals · Lawton, OK</span></span>
+    <img src="team-logo.png" alt="Pam and Barry's Real Estate Team" class="pb-logo" width="141" height="180">
+    <!-- RE/MAX COMPLIANCE: the official balloon + logotype still needs to sit alongside the team mark on public marketing. -->
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span class="lab">Lawton and Southwest Oklahoma</span>
+    <h1>Lawton Buyer Tools</h1>
+    <p class="intro">Two things I use with every buyer. They run on real local numbers, so what you see here is close to what the lender will see. Use them as much as you want. No sign-up.</p>
+  </div>
+</div>
+
+<nav class="tools" aria-label="Tools">
+  <a class="tool" href="payment-toolkit.html">
+    <span class="lab">Calculator</span>
+    <h2>Buyer Payment Toolkit</h2>
+    <p>Put in a price and see the whole monthly payment, tax and insurance included.</p>
+    <ul>
+      <li>VA, FHA and conventional side by side</li>
+      <li>What each Fort Sill BAH rate buys</li>
+      <li>Price cut vs. seller-paid points</li>
+      <li>What waiting a year costs</li>
+    </ul>
+    <span class="go">Open the toolkit &rarr;</span>
+  </a>
+  <a class="tool" href="buying-guide.html">
+    <span class="lab">Guide</span>
+    <h2>Buying a Home in Lawton</h2>
+    <p>The real math on a median Lawton house, how the process goes start to finish, and what to bring the lender.</p>
+    <ul>
+      <li>Where your payment actually goes</li>
+      <li>Your VA benefit, if you're at Fort Sill</li>
+      <li>A worksheet to fill out before we meet</li>
+      <li>Where the market is right now</li>
+    </ul>
+    <span class="go">Read the guide &rarr;</span>
+  </a>
+</nav>
+
+<div class="signoff">
+  <div style="display:flex;flex-direction:column;gap:11px">
+    <h2 style="font-size:19px">Want to talk it through?</h2>
+    <p>Call or text me. If I don't pick up I'm probably at a showing, and I'll get right back to you.</p>
+  </div>
+  <div class="contact">
+    <span class="nm">Dustin Ray</span>
+    <span class="rl">Buyer Specialist, License #213324</span>
+    <a href="tel:+15803514683">580-351-4683</a>
+    <a href="mailto:dustin@homes-lawton.com">dustin@homes-lawton.com</a>
+    <span class="rl" style="margin-top:5px;margin-bottom:0">Pam &amp; Barry's Team<br>RE/MAX Professionals, NW Elm Ave, Lawton</span>
+  </div>
+</div>
+
+<footer>
+  <p>Pam &amp; Barry's Team, RE/MAX Professionals. Each Office Independently Owned and Operated. Payment figures are estimates for planning and are not a loan estimate, a pre-approval, or a commitment to lend. Rates, taxes, insurance, and mortgage insurance are set by third parties and change.</p>
+</footer>
+
+</div>
+</body>
+</html>
