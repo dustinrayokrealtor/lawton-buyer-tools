@@ -11,132 +11,161 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Standalone reset. The artifact host injects this, a bare HTML file does not. */
 [hidden]{display:none!important}
 
 :root{
-  --red:#FF1200;
-  --blue:#0043FF;
-  --dark:#000E35;
-  --cream:#F7F5EE;
-  --sky:#A3D4F2;
-  --darkred:#660000;
-  --rule:#d8d4c8;
-  --surface:#ffffff;
-  --muted:#4a5568;
+  --red:#FF1200; --blue:#0043FF; --dark:#000E35;
+  --cream:#F7F5EE; --sky:#A3D4F2; --rule:#e3dfd0;
+  --surface:#ffffff; --muted:#586178; --darkmuted:#aab4d4;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:'Montserrat',Arial,Helvetica,sans-serif;
-  background:var(--cream);
-  color:var(--dark);
-  line-height:1.6;
-  font-size:17px;
+  margin:0;font-family:'Montserrat',Arial,Helvetica,sans-serif;
+  background:var(--cream);color:var(--dark);line-height:1.65;font-size:17px;
 }
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
 
 /* ---------- header ---------- */
-header.site{background:var(--surface);border-bottom:1px solid var(--rule)}
-.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;flex-wrap:wrap}
-.brandline{font-weight:600;font-size:14px;letter-spacing:.02em;line-height:1.35}
-.brandline span{display:block;font-weight:400;font-size:12px;color:var(--muted)}
-/* RE/MAX COMPLIANCE: drop the official balloon + logotype lockup here.
-   Keep it on the white chip below so the mark is never recolored against cream.
-   Clear space: half the height of the white bar around the balloon.
-   Do not tilt, recolor, crop or place the balloon inside a shape. */
-.logochip{
-  background:#fff;padding:8px 14px;border:1px solid var(--rule);
-  display:flex;align-items:center;min-height:52px;font-size:12px;color:var(--muted)
-}
-.logochip img{display:block;height:36px;width:auto}
+header.site{background:var(--surface);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:40}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.brandline{font-weight:700;font-size:14px;letter-spacing:.01em;line-height:1.35}
+.brandline span{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px}
+.logochip{background:#fff;padding:12px 18px;display:flex;align-items:center;min-height:52px}
+.logochip img{display:block;height:30px;width:auto}
 
 /* ---------- hero ---------- */
-.hero{padding:44px 0 32px}
-h1{font-size:clamp(28px,5.5vw,42px);line-height:1.15;margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
-.lede{font-size:clamp(17px,2.4vw,20px);color:var(--muted);margin:0 0 6px;max-width:44em}
-.stamp{font-size:13px;color:var(--muted);margin-top:14px}
+.hero{background:var(--dark);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--red) 50%,var(--blue) 50%)}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(163,212,242,.16),rgba(163,212,242,0) 70%)}
+.hero-in{padding:48px 0 36px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(163,212,242,.12);border:1px solid rgba(163,212,242,.35);color:var(--sky);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+.eyebrow svg{width:14px;height:14px;flex:none}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.14;margin:0 0 14px;font-weight:800;letter-spacing:-.01em}
+.hero .lede{font-size:clamp(17px,2.2vw,20px);color:var(--darkmuted);margin:0 0 10px;max-width:42em;font-weight:400}
+.hero .stamp{font-size:13px;color:var(--sky);margin:0}
 
-/* ---------- blocks ---------- */
-section{padding:34px 0;border-top:1px solid var(--rule)}
-h2{font-size:clamp(21px,3.4vw,28px);margin:0 0 14px;font-weight:700;letter-spacing:-.01em}
-h3{font-size:17px;margin:24px 0 8px;font-weight:600}
+.stats{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px}
+.stat b{display:block;font-size:clamp(19px,2.6vw,24px);font-weight:800;color:#fff;letter-spacing:-.01em}
+.stat span{display:block;font-size:12.5px;color:var(--darkmuted);margin-top:4px;line-height:1.4}
+
+/* ---------- sections ---------- */
+section.block{padding:40px 0;border-top:1px solid var(--rule)}
+section.block.alt{background:var(--surface)}
+.kicker{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.kicker .ic{flex:none;width:42px;height:42px;border-radius:10px;background:var(--dark);color:var(--sky);display:flex;align-items:center;justify-content:center}
+.kicker svg{width:22px;height:22px}
+h2{font-size:clamp(22px,3.4vw,29px);margin:0;font-weight:800;letter-spacing:-.01em;scroll-margin-top:78px}
+h3{font-size:17px;margin:26px 0 8px;font-weight:700;color:var(--dark)}
 p{margin:0 0 14px;max-width:44em}
 ul{margin:0 0 14px;padding-left:20px;max-width:44em}
 li{margin-bottom:7px}
 a{color:var(--blue)}
+strong{font-weight:700}
 
 /* ---------- calculator ---------- */
-.calc{background:var(--surface);border:1px solid var(--rule);padding:24px}
+.calcwrap{padding:32px 0 8px}
+.calc{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:26px;box-shadow:0 1px 0 var(--rule)}
+.calclabel{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:18px}
+.calclabel svg{width:16px;height:16px;color:var(--blue)}
 .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:20px}
-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--dark)}
 select,input[type=number]{
   width:100%;padding:11px 12px;font:inherit;font-size:16px;
-  border:1px solid var(--rule);background:#fff;color:var(--dark);border-radius:0;
+  border:1px solid var(--rule);background:var(--cream);color:var(--dark);border-radius:8px;
 }
-select:focus,input:focus{outline:2px solid var(--blue);outline-offset:-2px}
+select:focus,input:focus{outline:2px solid var(--blue);outline-offset:-1px}
 .checks{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
-.chk{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.45}
+.chk{display:flex;align-items:flex-start;gap:10px;font-size:15px;line-height:1.45;font-weight:600}
 .chk input{margin-top:4px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--blue)}
-.chk .sub{display:block;font-size:13px;color:var(--muted)}
+.chk .sub{display:block;font-size:13px;color:var(--muted);font-weight:400}
 .subfields{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;
-  margin:2px 0 6px 28px;padding:14px;background:var(--cream);border-left:3px solid var(--sky)
+  margin:2px 0 6px 28px;padding:14px;background:var(--cream);border-radius:10px;border-left:3px solid var(--sky)
 }
-.flag{background:var(--cream);border-left:4px solid var(--red);padding:13px 16px;margin-bottom:18px;font-size:14px;line-height:1.5}
-.flag strong{font-weight:600}
+.flag{background:#FFF1EF;border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:14px 16px;margin-bottom:18px;font-size:14px;line-height:1.5}
+.flag strong{font-weight:700}
 .exempt{
-  margin-top:14px;padding:12px 14px;background:rgba(255,255,255,.65);
+  margin-top:14px;padding:12px 14px;background:rgba(255,255,255,.65);border-radius:8px;
   font-size:13.5px;line-height:1.5;border-left:3px solid var(--blue)
 }
 .brow.off span:last-child{color:var(--muted)}
 
-.result{background:var(--sky);padding:22px;margin-bottom:0}
-.rlabel{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.rbig{font-size:clamp(34px,7vw,50px);font-weight:700;line-height:1.05;letter-spacing:-.02em}
-.rsub{font-size:14px;margin-top:8px}
-.breakdown{margin-top:18px;border-top:1px solid rgba(0,14,53,.2);padding-top:14px}
-.brow{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:5px 0}
-.brow.tot{font-weight:700;border-top:1px solid rgba(0,14,53,.2);margin-top:8px;padding-top:10px}
+.result{background:var(--dark);color:#fff;padding:24px;margin-bottom:0;border-radius:12px}
+.rlabel{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;color:var(--sky)}
+.rbig{font-size:clamp(34px,7vw,50px);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+.rsub{font-size:14px;margin-top:8px;color:var(--darkmuted)}
+.breakdown{margin-top:18px;border-top:1px solid rgba(255,255,255,.16);padding-top:14px}
+.brow{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:6px 0;color:var(--darkmuted)}
+.brow span:last-child{color:#fff;font-weight:600}
+.brow.tot{font-weight:700;border-top:1px solid rgba(255,255,255,.16);margin-top:8px;padding-top:12px;color:#fff}
+.brow.tot span:last-child{color:#fff}
+
+.calcfoot{font-size:13.5px;color:var(--muted);margin-top:14px}
 
 /* ---------- tables ---------- */
-.tscroll{overflow-x:auto;margin:0 0 14px}
-table{border-collapse:collapse;width:100%;font-size:15px;background:var(--surface);min-width:420px}
-caption{text-align:left;font-size:13px;color:var(--muted);padding:0 0 8px}
-th,td{padding:9px 12px;text-align:left;border:1px solid var(--rule)}
-th{background:var(--sky);font-weight:600;font-size:14px}
+.tscroll{overflow-x:auto;margin:0 0 15px;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--surface);min-width:480px}
+caption{text-align:left;font-size:13px;color:var(--muted);padding:12px 14px 10px;caption-side:top}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--rule)}
+th{background:var(--dark);color:#fff;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.03em}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-tr.grp td{background:#eceadf;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+tr.grp td{background:var(--sky);font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--dark)}
+tbody tr:not(.grp):nth-of-type(even){background:var(--cream)}
 
 /* ---------- callouts ---------- */
-.note{background:var(--surface);border-left:4px solid var(--blue);padding:16px 18px;margin:0 0 16px}
-.note.warn{border-left-color:var(--red)}
+.note{background:linear-gradient(0deg,rgba(163,212,242,.28),rgba(163,212,242,.28)),var(--surface);border:1px solid var(--rule);border-left:4px solid var(--blue);padding:18px 20px;margin:0 0 18px;border-radius:0 10px 10px 0;display:flex;gap:14px}
+.note .nic{flex:none;width:26px;height:26px;color:var(--blue);margin-top:2px}
 .note p:last-child{margin-bottom:0}
-.note strong{font-weight:600}
+.note.warn{border-left-color:var(--red)}
+.note.warn .nic{color:var(--red)}
+.note strong{font-weight:700}
 
 /* ---------- cta ---------- */
-.cta{background:var(--surface);border:1px solid var(--rule);padding:26px;text-align:center}
-.btn{
-  display:inline-block;background:var(--red);color:#fff;text-decoration:none;
-  font-weight:600;padding:14px 26px;font-size:16px;margin:6px 5px 0;
-}
+.ctawrap{padding:44px 0 52px}
+.cta{background:var(--dark);color:#fff;border-radius:16px;padding:38px 30px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--red) 50%,var(--blue) 50%)}
+.cta h2{color:#fff}
+.cta p.ctalede{margin:14px auto 22px;max-width:34em;color:var(--darkmuted)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:14px 24px;font-size:15.5px;border-radius:10px;transition:opacity .15s}
 .btn.alt{background:var(--blue)}
-.btn:hover{opacity:.9}
+.btn svg{width:18px;height:18px}
+.btn:hover{opacity:.88}
+.ctafoot{font-size:13.5px;color:var(--darkmuted);margin:22px auto 0;max-width:34em}
+.ctafoot a{color:var(--sky)}
 
 /* ---------- footer ---------- */
-footer.site{background:var(--surface);border-top:1px solid var(--rule);margin-top:20px;padding:28px 0 36px}
-footer.site p{font-size:12.5px;color:var(--muted);line-height:1.6;max-width:none}
-footer.site .eiooo{font-weight:600;color:var(--dark)}
+footer.site{background:var(--surface);border-top:1px solid var(--rule);padding:30px 0 96px}
+footer.site p{font-size:12.5px;color:var(--muted);line-height:1.65;max-width:none}
+footer.site .eiooo{font-weight:700;color:var(--dark);font-size:13.5px}
+
+/* ---------- mobile sticky call bar ---------- */
+.stickybar{display:none}
+@media (max-width:680px){
+  .stickybar{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:var(--dark);border-top:1px solid rgba(255,255,255,.12);
+    padding:10px 14px;gap:10px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .stickybar a{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 10px;border-radius:9px;font-weight:700;font-size:14.5px;
+    text-decoration:none;color:#fff;background:var(--red);
+  }
+  .stickybar a.alt{background:var(--blue)}
+  .stickybar svg{width:17px;height:17px;flex:none}
+  footer.site{padding-bottom:30px}
+}
 
 @media print{
   body{background:#fff;font-size:12pt}
-  .calc,.cta,.result{background:#fff!important}
-  .btn{display:none}
-  section{page-break-inside:avoid}
-  table,.note,.calc{box-shadow:none}
+  .calc,.cta,.result,.btn,.stickybar{background:#fff!important;color:#000!important}
+  .btn,.stickybar{display:none!important}
+  section.block{page-break-inside:avoid}
 }
 </style>
 </head>
@@ -148,23 +177,39 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
       Pam &amp; Barry's Team<br>RE/MAX Professionals
       <span>Dustin Ray, Buyer Specialist &middot; 580-351-4683</span>
     </div>
-    <!-- RE/MAX COMPLIANCE: replace the text inside .logochip with the official
-         balloon + logotype image, e.g.
-         <img src="../assets/remax-lockup.svg" alt="RE/MAX"> -->
-    <div class="logochip">RE/MAX logo</div>
+    <div class="logochip">
+      <img src="../assets/remax-logo.png" alt="RE/MAX" width="163" height="52">
+    </div>
   </div>
 </header>
 
-<main class="wrap">
-
 <div class="hero">
-  <h1>What your BAH actually buys at Fort Sill</h1>
-  <p class="lede">Run your pay grade against real Lawton numbers. Comanche County property tax, actual local insurance rates, and a VA loan with nothing down.</p>
-  <p class="stamp">2026 BAH rates for the Fort Sill / Lawton military housing area. Effective January 1, 2026.</p>
+  <div class="wrap hero-in">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.8 2.7 2c0 2.3-5.4 1.7-5.4 4 0 1.2 1.2 2 2.7 2s2.7-1 2.7-2.3"/></svg>
+      2026 Fort Sill BAH calculator
+    </span>
+    <h1>What your BAH actually buys at Fort Sill</h1>
+    <p class="lede">Run your pay grade against real Lawton numbers. Comanche County property tax, actual local insurance rates, and a VA loan with nothing down.</p>
+    <p class="stamp">2026 BAH rates for the Fort Sill / Lawton military housing area. Effective January 1, 2026.</p>
+
+    <div class="stats">
+      <div class="stat"><b>21 pay grades</b><span>E-1 through O-7, with and without dependents</span></div>
+      <div class="stat"><b>$0 down</b><span>VA loan, funding fee financed into the loan</span></div>
+      <div class="stat"><b>1.11%</b><span>Actual Lawton property tax rate, not a state average</span></div>
+      <div class="stat"><b>100% rated</b><span>Oklahoma waives your property tax entirely</span></div>
+    </div>
+  </div>
 </div>
 
-<section id="calc" style="border-top:none;padding-top:0">
-  <div class="calc">
+<main class="wrap">
+
+<div class="calcwrap">
+  <div class="calc" id="calc">
+    <div class="calclabel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.3c0-1.3 1.2-2.3 2.7-2.3s2.7.8 2.7 2c0 2.3-5.4 1.7-5.4 4 0 1.2 1.2 2 2.7 2s2.7-1 2.7-2.3"/></svg>
+      Run your numbers
+    </div>
     <div class="fields">
       <div>
         <label for="grade">Pay grade</label>
@@ -266,11 +311,14 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
     </div>
   </div>
 
-  <p style="font-size:13.5px;color:var(--muted);margin-top:14px">Property tax is figured at 1.11% of value per year, the Lawton median effective rate from Comanche County records. Insurance is $19.28 per $1,000 of dwelling coverage per year, the Lawton city average scaled to your actual coverage. Statewide Oklahoma insurance figures blend in the Oklahoma City metro and will overstate a Lawton payment by about $110 a month. This is an estimate for planning. Your lender gives you the real number.</p>
-</section>
+  <p class="calcfoot">Property tax is figured at 1.11% of value per year, the Lawton median effective rate from Comanche County records. Insurance is $19.28 per $1,000 of dwelling coverage per year, the Lawton city average scaled to your actual coverage. Statewide Oklahoma insurance figures blend in the Oklahoma City metro and will overstate a Lawton payment by about $110 a month. This is an estimate for planning. Your lender gives you the real number.</p>
+</div>
 
-<section>
-  <h2>The part nobody tells you before you PCS here</h2>
+<section class="block">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
+    <h2>The part nobody tells you before you PCS here</h2>
+  </div>
   <p>The median home sale in Comanche County is $199,500. A full payment on that runs about $1,793 a month.</p>
   <p>An E-7 with dependents draws $1,587. That is roughly $200 a month short of the median.</p>
   <p>That does not mean you cannot buy. It means your BAH alone is shopping a different part of the market than the median headline, and that is worth knowing before you land. Here is what it really looks like on the ground.</p>
@@ -282,8 +330,11 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
   </ul>
 </section>
 
-<section>
-  <h2>Your BAS, and the honest answer about it</h2>
+<section class="block alt">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
+    <h2>Your BAS, and the honest answer about it</h2>
+  </div>
   <p>BAS is $476.95 a month for enlisted and $328.48 for officers in 2026. Flat across every rank, tax free, its own line on your LES.</p>
   <p>Two separate questions get mixed up here, so take them one at a time.</p>
   <h3>Does BAS help you qualify?</h3>
@@ -293,12 +344,16 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
   <p>What I see work: qualify on the full picture, buy on a number you can carry without touching BAS, and let the extra room be the reason you sleep at night. The checkbox above exists so you can see both versions of the math. Run it with BAS and run it without, then decide which one you want to sign for.</p>
 
   <div class="note warn">
+    <span class="nic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
     <p><strong>Residual income is the test that actually catches people.</strong> The VA does not only look at your debt to income ratio. It checks how much cash is left over after the payment, taxes, and your other debts. Oklahoma sits in the South region. A family of four on a loan above $80,000 needs $1,003 a month left over, plus a utility allowance of $0.14 per square foot. On a 1,600 square foot house that is another $224 off the top. Ask your lender to run your residual income before you go shopping. It is the number that decides borderline files.</p>
   </div>
 </section>
 
-<section>
-  <h2>If you have a VA disability rating</h2>
+<section class="block">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+    <h2>If you have a VA disability rating</h2>
+  </div>
   <p>A rating changes three separate things about buying a house, and most people only know about one of them.</p>
 
   <h3>The compensation counts as income</h3>
@@ -315,12 +370,16 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
   <p>It is not automatic. You file Oklahoma Tax Commission Form 998 with the Comanche County Assessor and bring your rating letter from the VA. Do it once, keep it as long as you qualify.</p>
 
   <div class="note">
+    <span class="nic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
     <p>Oklahoma also exempts military retirement pay from state income tax and gives 100% rated veterans a sales tax exemption. Neither one changes your mortgage payment, but both change what your money does once you live here. The Oklahoma Department of Veterans Affairs office in Lawton can walk you through what you qualify for.</p>
   </div>
 </section>
 
-<section>
-  <h2>2026 Fort Sill BAH by pay grade, and what each one buys</h2>
+<section class="block alt">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
+    <h2>2026 Fort Sill BAH by pay grade, and what each one buys</h2>
+  </div>
   <p>Purchase prices below assume a VA loan at 6.5% with nothing down, a 2.15% funding fee financed into the loan, and Lawton tax and insurance. Rates move. Use the calculator above for your own numbers.</p>
 
   <div class="tscroll">
@@ -367,16 +426,22 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
   <p style="font-size:13.5px;color:var(--muted)">BAH rates published by the Defense Travel Management Office. Confirm your exact rate with the official DoD calculator or your finance office.</p>
 </section>
 
-<section>
-  <h2>Renting versus buying on the same allowance</h2>
+<section class="block">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V10l6-5 6 5v11"/><path d="M10 21v-6h4v6"/></svg></span>
+    <h2>Renting versus buying on the same allowance</h2>
+  </div>
   <p>Median gross rent in Lawton runs about $828 a month. An E-5 with dependents draws $1,233 in BAH.</p>
   <p>Rent a place at the median and you keep the difference, which is real money and a real reason some people rent. Buy instead and that same $1,233 carries about a $137,000 house, and the payment is fixed for thirty years while rent is not.</p>
   <p>The thing that decides it is usually how long your tour runs and what you do with the house when you leave. Three years is tight for buying and selling. Three years and you keep it as a rental is a different conversation, and Fort Sill turns over enough tenants that the second one works more often than people expect.</p>
   <p>Either way, run it with a number instead of a feeling. That is what the calculator up top is for.</p>
 </section>
 
-<section>
-  <h2>A few things worth knowing before you get here</h2>
+<section class="block alt">
+  <div class="kicker">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+    <h2>A few things worth knowing before you get here</h2>
+  </div>
   <ul>
     <li><strong>You can buy before you arrive.</strong> With orders in hand, a lender can qualify you on your gaining station BAH. Plenty of families close within a week or two of reporting.</li>
     <li><strong>The VA appraisal is its own animal.</strong> A VA assigned appraiser sets a Notice of Value and checks minimum property requirements. On Lawton's older housing stock that catches things a regular appraisal would not. Oklahoma also requires a termite inspection on VA purchases.</li>
@@ -385,15 +450,23 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
   </ul>
 </section>
 
-<section>
+<div class="ctawrap">
   <div class="cta">
-    <h2 style="margin-top:0">Want the version with your actual numbers in it?</h2>
-    <p style="margin:0 auto 6px;max-width:34em">I am a buyer specialist with Pam &amp; Barry's Team at RE/MAX Professionals in Lawton. Send me your pay grade and your timeline and I will put together what is actually available in your range right now. No cost, and no obligation to work with me.</p>
-    <a class="btn" href="tel:5803514683">Call or text 580-351-4683</a>
-    <a class="btn alt" href="mailto:dustin@homes-lawton.com?subject=Fort%20Sill%20BAH%20question">Email me</a>
-    <p style="font-size:13.5px;color:var(--muted);margin:18px auto 0;max-width:34em">Want the whole payment picture including FHA, USDA and conventional? Use the <a href="../payment-toolkit.html">Buyer Payment Toolkit</a>. Want to know how the whole purchase works start to finish? Read <a href="../buying-guide.html">Buying a Home in Lawton</a>.</p>
+    <h2>Want the version with your actual numbers in it?</h2>
+    <p class="ctalede">I am a buyer specialist with Pam &amp; Barry's Team at RE/MAX Professionals in Lawton. Send me your pay grade and your timeline and I will put together what is actually available in your range right now. No cost, and no obligation to work with me.</p>
+    <div class="btnrow">
+      <a class="btn" href="tel:5803514683">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+        Call or text 580-351-4683
+      </a>
+      <a class="btn alt" href="mailto:dustin@homes-lawton.com?subject=Fort%20Sill%20BAH%20question">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email me
+      </a>
+    </div>
+    <p class="ctafoot">Want the whole payment picture including FHA, USDA and conventional? Use the <a href="../payment-toolkit.html">Buyer Payment Toolkit</a>. Want to know how the whole purchase works start to finish? Read <a href="../buying-guide.html">Buying a Home in Lawton</a>.</p>
   </div>
-</section>
+</div>
 
 </main>
 
@@ -407,6 +480,17 @@ footer.site .eiooo{font-weight:600;color:var(--dark)}
     <p>&copy; <span id="yr">2026</span> Dustin Ray. Market data from Comanche County records and MLS statistics current as of September 2026.</p>
   </div>
 </footer>
+
+<div class="stickybar">
+  <a href="tel:5803514683">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+    Call/Text
+  </a>
+  <a class="alt" href="mailto:dustin@homes-lawton.com?subject=Fort%20Sill%20BAH%20question">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+    Email
+  </a>
+</div>
 
 <script>
 (function(){
