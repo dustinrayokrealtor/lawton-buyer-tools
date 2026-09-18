@@ -27,12 +27,15 @@ body{
   background:var(--cream);color:var(--dark);line-height:1.65;font-size:17px;
 }
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+@media (max-width:480px){.wrap{padding:0 16px}}
 
 /* ---------- header ---------- */
 header.site{background:var(--surface);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:40}
-.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
 .brandline{font-weight:700;font-size:14px;letter-spacing:.01em;line-height:1.35}
 .brandline span{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px}
+.hdrlink{color:var(--muted);text-decoration:none}
+.hdrlink:hover{color:var(--blue);text-decoration:underline}
 .logochip{background:#fff;padding:12px 18px;display:flex;align-items:center;min-height:52px}
 .logochip img{display:block;height:30px;width:auto}
 
@@ -40,7 +43,7 @@ header.site{background:var(--surface);border-bottom:1px solid var(--rule);positi
 .hero{background:var(--dark);color:#fff;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--red) 50%,var(--blue) 50%)}
 .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(163,212,242,.16),rgba(163,212,242,0) 70%)}
-.hero-in{padding:48px 0 36px;position:relative}
+.hero-in{padding-block:48px 36px;position:relative}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(163,212,242,.12);border:1px solid rgba(163,212,242,.35);color:var(--sky);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:20px}
 .eyebrow svg{width:14px;height:14px;flex:none}
 .hero h1{font-size:clamp(28px,5vw,42px);line-height:1.14;margin:0 0 14px;font-weight:800;letter-spacing:-.01em}
@@ -148,7 +151,7 @@ footer.site .eiooo{font-weight:700;color:var(--dark);font-size:13.5px}
   .stickybar{
     display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
     background:var(--dark);border-top:1px solid rgba(255,255,255,.12);
-    padding:10px 14px;gap:10px;
+    padding:10px 16px;gap:10px;
     padding-bottom:calc(10px + env(safe-area-inset-bottom));
   }
   .stickybar a{
@@ -175,7 +178,7 @@ footer.site .eiooo{font-weight:700;color:var(--dark);font-size:13.5px}
   <div class="wrap hdr">
     <div class="brandline">
       Pam &amp; Barry's Team<br>RE/MAX Professionals
-      <span>Dustin Ray, Buyer Specialist &middot; 580-351-4683</span>
+      <span>Dustin Ray, Buyer Specialist &middot; <a href="tel:5803514683" class="hdrlink">580-351-4683</a> &middot; <a href="mailto:dustin@homes-lawton.com" class="hdrlink">dustin@homes-lawton.com</a></span>
     </div>
     <div class="logochip">
       <img src="../assets/remax-logo.png" alt="RE/MAX" width="163" height="52">
