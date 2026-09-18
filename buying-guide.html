@@ -57,6 +57,19 @@ p{margin:0;max-width:64ch}
 .backlink svg{width:13px;height:13px}
 .backlink:hover{color:var(--rx-blue);border-color:var(--rx-blue)}
 .brandname span{color:var(--ink-3);font-weight:500}
+.brandname .contactline{display:block;margin-top:3px;font-size:11.5px}
+.brandname a{color:var(--ink-3);font-weight:500;text-decoration:none}
+.brandname a:hover{color:var(--rx-blue);text-decoration:underline}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.hero-actions a{
+  font:700 13px/1.2 "Montserrat",Arial,sans-serif;padding:11px 18px;border-radius:2px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.hero-actions a.primary{background:var(--rx-red);color:#fff}
+.hero-actions a.primary:hover{background:#cc0e00}
+.hero-actions a.alt{background:var(--rx-blue);color:#fff}
+.hero-actions a.alt:hover{background:#0036CC}
+.hero-actions svg{width:15px;height:15px}
 .logo-slot{
   display:inline-flex;align-items:center;padding:5px 11px;background:#fff;
   border:1px dashed var(--rx-blue);border-radius:2px;color:var(--rx-blue);
@@ -180,13 +193,17 @@ footer p{font-size:11px;color:var(--ink-3);line-height:1.5;max-width:94ch}
   <div class="brandrow">
     <div class="hdrleft">
       <a href="./" class="backlink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Tools</a>
-      <span class="brandname">Pam &amp; Barry's Team <span>· RE/MAX Professionals · Lawton, OK</span></span>
+      <span class="brandname">Pam &amp; Barry's Team <span>· RE/MAX Professionals · Lawton, OK</span><span class="contactline">Dustin Ray, Buyer Specialist &middot; <a href="tel:5803514683">580-351-4683</a> &middot; <a href="mailto:dustin@homes-lawton.com">dustin@homes-lawton.com</a></span></span>
     </div>
     <span class="logo-wrap"><img src="team-logo.png" alt="Pam and Barry's Real Estate Team" class="pb-logo" width="141" height="180"><span class="rx-chip"><img src="assets/remax-logo.png" alt="RE/MAX" width="381" height="116"></span></span>
   </div>
   <div style="display:flex;flex-direction:column;gap:12px">
     <h1>Buying a Home in Lawton</h1>
     <p class="intro">Everything below is the real math on a real house in this market, as of September 2026. No surprises at the closing table. If a number changes between now and then, I'll tell you.</p>
+    <div class="hero-actions">
+      <a class="primary" href="tel:5803514683"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Call or text</a>
+      <a class="alt" href="mailto:dustin@homes-lawton.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me</a>
+    </div>
   </div>
 </div>
 
