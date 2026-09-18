@@ -193,6 +193,15 @@ summary:focus-visible{outline:2px solid var(--rx-blue);outline-offset:-2px}
 .actions button:hover{border-color:var(--rx-blue);color:var(--rx-blue)}
 .actions button.primary{background:var(--rx-blue);color:#fff;border-color:var(--rx-blue)}
 .actions button.primary:hover{background:#0036CC;color:#fff}
+.actions a.send{
+  font:700 var(--s-1)/1.2 "Montserrat",Arial,sans-serif;background:var(--rx-red);color:#fff;
+  border:1px solid var(--rx-red);border-radius:2px;padding:9px 14px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.actions a.send:hover{background:#cc0e00;border-color:#cc0e00}
+.actions a.send svg{width:14px;height:14px}
+.sendhint{font-size:12px;color:var(--ink-3);margin-top:9px;line-height:1.45;max-width:62ch}
+@media print{.sendhint{display:none}}
 
 footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:7px}
 footer p{font-size:11.5px;color:var(--ink-3);line-height:1.5;max-width:92ch}
@@ -255,7 +264,7 @@ footer b{color:var(--ink-2)}
     <p class="intro">Lawton and SWOK. Property tax and homeowners insurance are set to real local numbers, so the payment you see is close to the one underwriting will see. Change anything you want. Everything recalculates.</p>
     <div class="hero-cta">
       <a class="hbtn" href="tel:5803514683"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Call or text</a>
-      <a class="hbtn alt" href="mailto:dustin@homes-lawton.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me</a>
+      <a class="hbtn alt" href="mailto:dustin@homes-lawton.com?subject=Buyer%20Payment%20Toolkit&body=Hi%20Dustin%2C%0A%0AI%20was%20using%20the%20payment%20toolkit.%20What%20I%20am%20trying%20to%20figure%20out%3A%0A%0A%0A%0AThanks%2C%0A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me</a>
     </div>
     <div class="phstats">
       <div><b>$199,500</b><span>Lawton median sale price</span></div>
@@ -322,9 +331,11 @@ footer b{color:var(--ink-2)}
 </section>
 
 <div class="actions">
+  <a class="send" id="sendmail" href="mailto:dustin@homes-lawton.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me this breakdown</a>
   <button type="button" class="primary" id="btn-print">Print or save as PDF</button>
   <button type="button" id="btn-reset">Reset to Lawton median</button>
 </div>
+<p class="sendhint">The email button opens your own mail app with these numbers already filled in. Send it and I'll reply with what's actually listed in this payment range, plus anything in the numbers I'd push back on.</p>
 
 <!-- ============ TABS ============ -->
 <div class="tabs" role="tablist" aria-label="Toolkit sections">
@@ -675,6 +686,43 @@ footer b{color:var(--ink-2)}
       "%, " + $("term").value + " year";
     $("downhint").textContent = money(c.down) + " out of pocket";
     if (c.hoa > 0) $("hero-note").textContent += ", includes " + money(c.hoa) + " HOA";
+
+    buildMail(c, names[loan]);
+  }
+
+  // Prefill an email with whatever scenario is on screen, so a buyer can send
+  // it from their own mail app instead of filling out a form.
+  function buildMail(c, loanName){
+    var years = $("term").value;
+    var rate  = num("rate", 6.76);
+    var L = [];
+    L.push("Hi Dustin,");
+    L.push("");
+    L.push("I ran some numbers in your payment toolkit. Here is where I landed:");
+    L.push("");
+    L.push("Purchase price: " + money(c.price));
+    L.push("Loan: " + loanName + ", " + (c.downPct === 0 ? "zero down" : c.downPct + "% down (" + money(c.down) + ")"));
+    L.push("Rate: " + rate + "%, " + years + " year");
+    L.push("");
+    L.push("Monthly payment breakdown:");
+    L.push("  Principal and interest: " + money(c.pi));
+    L.push("  Property tax: " + money(c.tax));
+    L.push("  Homeowners insurance: " + money(c.ins));
+    L.push("  Mortgage insurance: " + money(c.mi));
+    if (c.hoa > 0) L.push("  HOA: " + money(c.hoa));
+    L.push("  Total monthly payment: " + money(c.total));
+    L.push("");
+    L.push("A couple of things I'd like to know:");
+    L.push("  - What is actually listed around this payment right now?");
+    L.push("  - Anything in these numbers that looks off to you?");
+    L.push("");
+    L.push("Thanks,");
+    L.push("");
+
+    var subject = "Payment numbers - " + money(c.price) + " at " + money(c.total) + " a month";
+    $("sendmail").href = "mailto:dustin@homes-lawton.com"
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(L.join("\n"));
   }
 
   function renderCompare(){
