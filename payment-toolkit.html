@@ -59,6 +59,10 @@ header.site{background:var(--surface);border-bottom:1px solid var(--rule);positi
 .brandline span{display:block;font-weight:500;font-size:var(--s-1);color:var(--ink-3);margin-top:2px}
 .hdrlink{color:var(--ink-3);text-decoration:none}
 .hdrlink:hover{color:var(--rx-blue);text-decoration:underline}
+.hdrleft{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.backlink{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:12.5px;color:var(--ink-3);text-decoration:none;padding:7px 13px;border:1px solid var(--rule);border-radius:999px;white-space:nowrap;flex:none}
+.backlink svg{width:13px;height:13px}
+.backlink:hover{color:var(--rx-blue);border-color:var(--rx-blue)}
 .brandrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
 .brandname{font-weight:700;font-size:var(--s-1);letter-spacing:.04em}
 .brandname span{color:var(--ink-3);font-weight:500}
@@ -236,7 +240,10 @@ footer b{color:var(--ink-2)}
 
 <header class="site">
   <div class="sitehdr">
-    <span class="brandline">Pam &amp; Barry's Team <span>Dustin Ray, Buyer Specialist &middot; <a href="tel:5803514683" class="hdrlink">580-351-4683</a> &middot; <a href="mailto:dustin@homes-lawton.com" class="hdrlink">dustin@homes-lawton.com</a></span></span>
+    <div class="hdrleft">
+      <a href="./" class="backlink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Tools</a>
+      <span class="brandline">Pam &amp; Barry's Team <span>Dustin Ray, Buyer Specialist &middot; <a href="tel:5803514683" class="hdrlink">580-351-4683</a> &middot; <a href="mailto:dustin@homes-lawton.com" class="hdrlink">dustin@homes-lawton.com</a></span></span>
+    </div>
     <span class="logo-wrap"><img src="team-logo.png" alt="Pam and Barry's Real Estate Team" class="pb-logo" width="141" height="180"><span class="rx-chip"><img src="assets/remax-logo.png" alt="RE/MAX" width="381" height="116"></span></span>
   </div>
 </header>
