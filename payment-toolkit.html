@@ -18,7 +18,6 @@
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<div class="accentbar"></div>
 <!--
   Single-theme by deliberate choice: RE/MAX brand compliance fixes the palette.
   Every color is painted explicitly so the page holds on any host ground.
@@ -53,8 +52,13 @@ p{margin:0;max-width:64ch}
 }
 .muted{color:var(--ink-2);font-size:var(--s-1);line-height:1.5}
 
-/* header */
-header{display:flex;flex-direction:column;gap:12px;padding-bottom:16px;border-bottom:3px solid var(--ink);margin-bottom:20px}
+/* site header */
+header.site{background:var(--surface);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:40}
+.sitehdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap;max-width:1080px;margin:0 auto;padding-inline:16px}
+.brandline{font-weight:700;font-size:var(--s0);letter-spacing:.01em;line-height:1.35}
+.brandline span{display:block;font-weight:500;font-size:var(--s-1);color:var(--ink-3);margin-top:2px}
+.hdrlink{color:var(--ink-3);text-decoration:none}
+.hdrlink:hover{color:var(--rx-blue);text-decoration:underline}
 .brandrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
 .brandname{font-weight:700;font-size:var(--s-1);letter-spacing:.04em}
 .brandname span{color:var(--ink-3);font-weight:500}
@@ -63,6 +67,24 @@ header{display:flex;flex-direction:column;gap:12px;padding-bottom:16px;border-bo
   border:1px dashed var(--rx-blue);border-radius:2px;color:var(--rx-blue);
   font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.06em;
 }
+
+/* page hero band */
+.pagehero{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.pagehero::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--rx-red) 50%,var(--rx-blue) 50%)}
+.pagehero::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(163,212,242,.16),rgba(163,212,242,0) 70%)}
+.phin{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:44px 32px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(163,212,242,.12);border:1px solid rgba(163,212,242,.35);color:var(--sky-wash);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px}
+.eyebrow svg{width:14px;height:14px;flex:none}
+.pagehero h1{color:#fff;font-size:clamp(26px,4.6vw,38px)}
+.pagehero .intro{font-size:clamp(15px,1.9vw,17px);color:#B9C6DE;margin:12px 0 24px;max-width:42em;line-height:1.5}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+.hbtn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;padding:12px 20px;font-size:14.5px;border-radius:9px;background:var(--rx-red);color:#fff;transition:opacity .15s}
+.hbtn.alt{background:var(--rx-blue)}
+.hbtn:hover{opacity:.88}
+.hbtn svg{width:16px;height:16px}
+.phstats{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px}
+.phstats b{display:block;font-size:19px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.phstats span{display:block;font-size:11.5px;color:#93A3C4;margin-top:3px;line-height:1.4}
 
 /* input panel */
 .controls{
@@ -212,19 +234,33 @@ footer b{color:var(--ink-2)}
 @media print{.sitenav{display:none!important}}
 </style>
 
-<div class="wrap">
-<nav class="sitenav" aria-label="Site"><a href="./">&larr; All Lawton buyer tools</a><a href="buying-guide.html">Read the Lawton buyer guide &rarr;</a></nav>
-
-<header>
-  <div class="brandrow">
-    <span class="brandname">Pam &amp; Barry's Team <span>· RE/MAX Professionals · Lawton, OK</span></span>
+<header class="site">
+  <div class="sitehdr">
+    <span class="brandline">Pam &amp; Barry's Team <span>Dustin Ray, Buyer Specialist &middot; <a href="tel:5803514683" class="hdrlink">580-351-4683</a> &middot; <a href="mailto:dustin@homes-lawton.com" class="hdrlink">dustin@homes-lawton.com</a></span></span>
     <span class="logo-wrap"><img src="team-logo.png" alt="Pam and Barry's Real Estate Team" class="pb-logo" width="141" height="180"><span class="rx-chip"><img src="assets/remax-logo.png" alt="RE/MAX" width="381" height="116"></span></span>
   </div>
-  <div>
-    <h1>Buyer Payment Toolkit</h1>
-    <p class="muted" style="margin-top:6px">Lawton and SWOK. Property tax and homeowners insurance are set to real local numbers, so the payment you see is close to the one underwriting will see. Change anything you want. Everything recalculates.</p>
-  </div>
 </header>
+
+<div class="pagehero">
+  <div class="phin">
+    <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 3v4M8 3v4M2 11h20"></path></svg>Payment calculator</span>
+    <h1>Buyer Payment Toolkit</h1>
+    <p class="intro">Lawton and SWOK. Property tax and homeowners insurance are set to real local numbers, so the payment you see is close to the one underwriting will see. Change anything you want. Everything recalculates.</p>
+    <div class="hero-cta">
+      <a class="hbtn" href="tel:5803514683"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Call or text</a>
+      <a class="hbtn alt" href="mailto:dustin@homes-lawton.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me</a>
+    </div>
+    <div class="phstats">
+      <div><b>$199,500</b><span>Lawton median sale price</span></div>
+      <div><b>6.76%</b><span>Current 30yr rate, Freddie Mac</span></div>
+      <div><b>27 days</b><span>Median days on market</span></div>
+      <div><b>3.8 mo.</b><span>Months of supply</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<nav class="sitenav" aria-label="Site"><a href="./">&larr; All Lawton buyer tools</a><a href="buying-guide.html">Read the Lawton buyer guide &rarr;</a></nav>
 
 <!-- ============ INPUTS ============ -->
 <section class="controls" aria-label="Loan inputs">
