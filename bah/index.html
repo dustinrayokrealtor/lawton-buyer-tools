@@ -101,6 +101,11 @@ select:focus,input:focus{outline:2px solid var(--blue);outline-offset:-1px}
 .brow.off span:last-child{color:var(--muted)}
 
 .result{background:var(--dark);color:#fff;padding:24px;margin-bottom:0;border-radius:12px}
+.sendrow{margin-top:18px;border-top:1px solid rgba(255,255,255,.16);padding-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sendbtn{display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;font-size:14.5px;border-radius:9px;transition:opacity .15s;flex:none}
+.sendbtn:hover{opacity:.88}
+.sendbtn svg{width:16px;height:16px;flex:none}
+.sendnote{font-size:12.5px;color:var(--darkmuted);line-height:1.45;max-width:34em}
 .rlabel{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;color:var(--sky)}
 .rbig{font-size:clamp(34px,7vw,50px);font-weight:800;line-height:1.05;letter-spacing:-.02em}
 .rsub{font-size:14px;margin-top:8px;color:var(--darkmuted)}
@@ -318,6 +323,11 @@ footer.site .eiooo{font-weight:700;color:var(--dark);font-size:13.5px}
       </div>
 
       <div class="exempt" id="exempt" hidden></div>
+
+      <div class="sendrow">
+        <a class="sendbtn" id="sendmail" href="mailto:dustin@homes-lawton.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>Email me these numbers</a>
+        <span class="sendnote">Opens your own email with these numbers filled in. Send it and I'll reply with the houses actually in this range right now.</span>
+      </div>
     </div>
   </div>
 
@@ -661,6 +671,53 @@ footer.site .eiooo{font-weight:700;color:var(--dark);font-size:13.5px}
     el.tax.textContent = taxExempt ? "Exempt" : money(tax);
     el.ins.textContent = money(ins);
     el.tot.textContent = money(pi + tax + ins);
+
+    buildMail(row[0], withDeps, bah, basRate, disRating, disPay, rate, ffPct,
+              feeWaived, taxExempt, budget, price, loan, pi, tax, ins);
+  }
+
+  // Build a prefilled email carrying whatever the buyer just ran, so they can
+  // send it from their own mail app without filling out a form.
+  function buildMail(gradeName, withDeps, bah, basRate, disRating, disPay, rate,
+                     ffPct, feeWaived, taxExempt, budget, price, loan, pi, tax, ins){
+    var L = [];
+    L.push("Hi Dustin,");
+    L.push("");
+    L.push("I ran the BAH calculator on your site. Here is what it gave me:");
+    L.push("");
+    L.push("Pay grade: " + gradeName + (withDeps ? ", with dependents" : ", without dependents"));
+    L.push("Price I can carry: " + money(Math.floor(price / 100) * 100));
+    L.push("Monthly housing budget: " + money(budget));
+    L.push("");
+    L.push("What went into that budget:");
+    if (el.usebah.checked) L.push("  BAH: " + money(bah) + " a month");
+    if (el.usebas.checked) L.push("  BAS: " + money2(basRate) + " a month");
+    if (el.usedis.checked) L.push("  VA disability at " + disRating + "%: " + money(disPay) + " a month");
+    if (el.useextra.checked) {
+      var x = parseFloat(el.extra.value);
+      if (isFinite(x) && x > 0) L.push("  Base pay or other income: " + money(x) + " a month");
+    }
+    L.push("");
+    L.push("The payment it came to:");
+    L.push("  Loan amount, funding fee included: " + money(loan));
+    L.push("  Principal and interest: " + money(pi));
+    L.push("  Property tax: " + (taxExempt ? "Exempt" : money(tax)));
+    L.push("  Homeowners insurance: " + money(ins));
+    L.push("  Total monthly payment: " + money(pi + tax + ins));
+    L.push("");
+    L.push("Assumptions: VA loan, nothing down, " + rate + "% rate, funding fee " + ffPct + "%" +
+           (feeWaived ? " (waived)" : "") + ".");
+    if (taxExempt) L.push("Property tax shown as exempt at the 100% permanent rating.");
+    L.push("");
+    L.push("Could you send me what is actually on the market in this range?");
+    L.push("");
+    L.push("Thanks,");
+    L.push("");
+
+    var subject = "BAH numbers for " + gradeName + " - about " + money(Math.floor(price / 100) * 100);
+    $("sendmail").href = "mailto:dustin@homes-lawton.com"
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(L.join("\n"));
   }
 
   var watch = ["grade","dep","rate","ff","usebah","usebas","usedis","disrate","disdep","useextra","extra"];
